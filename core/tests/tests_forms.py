@@ -897,3 +897,36 @@ class WeightFormsTestCase(FormsTestCaseBase):
         page = self.c.post("/weight/{}/delete/".format(self.weight.id), follow=True)
         self.assertEqual(page.status_code, 200)
         self.assertContains(page, "Weight entry deleted")
+
+
+class BathFormsTestCase(FormsTestCaseBase):
+    @classmethod
+    def setUpClass(cls):
+        super(BathFormsTestCase, cls).setUpClass()
+        cls.bath = models.Bath.objects.create(
+            child=cls.child,
+            date=timezone.localdate(),
+        )
+
+    def test_add(self):
+        params = {
+            "child": self.child.id,
+            "date": timezone.localdate(),
+        }
+        page = self.c.post("/baths/add", params, follow=True)
+        self.assertEqual(page.status_code, 200)
+
+    def test_edit(self):
+        params = {
+            "child": self.bath.child.id,
+            "date": timezone.localdate() - datetime.timedelta(days=3),
+        }
+        page = self.c.post("/baths/{}/".format(self.bath.id), params, follow=True)
+        self.assertEqual(page.status_code, 200)
+        self.bath.refresh_from_db()
+        self.assertEqual(self.bath.date, params["date"])
+
+    def test_delete(self):
+        page = self.c.post("/baths/{}/delete/".format(self.bath.id), follow=True)
+        self.assertEqual(page.status_code, 200)
+        self.assertContains(page, "Bath entry deleted")

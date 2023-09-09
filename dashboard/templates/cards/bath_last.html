@@ -1,0 +1,26 @@
+{% extends 'cards/base.html' %}
+{% load duration i18n %}
+
+{% block header %}
+    <a href="{% url "core:bath-list" %}">
+        {% trans "Last Bath" %}
+    </a>
+{% endblock %}
+
+
+{% block title %}
+    {% if bath %}
+        {% blocktrans trimmed with since=bath.date|dayssince date=bath.date %}
+            <div>{{ since }}</div>
+            <small>{{ date }}</small>
+        {% endblocktrans %}
+    {% else %}
+        {% trans "Never" %}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {% if bath %}
+        {{ bath.date }}
+    {% endif %}
+{% endblock %}

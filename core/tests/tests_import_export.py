@@ -96,3 +96,9 @@ class ImportTestCase(TestCase):
 
     def test_weight(self):
         self.import_data(models.Weight, 5)
+
+    def test_weight(self):
+        self.import_data(models.Weight, 5)
+
+    def test_bath(self):
+        self.import_data(models.Bath, 1)

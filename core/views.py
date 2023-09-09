@@ -537,3 +537,31 @@ class WeightDelete(CoreDeleteView):
     model = models.Weight
     permission_required = ("core.delete_weight",)
     success_url = reverse_lazy("core:weight-list")
+
+
+class BathList(PermissionRequiredMixin, BabyBuddyFilterView):
+    model = models.Bath
+    template_name = "core/bath_list.html"
+    permission_required = ("core.view_bath",)
+    paginate_by = 10
+    filterset_class = filters.BathFilter
+
+
+class BathAdd(CoreAddView):
+    model = models.Bath
+    permission_required = ("core.add_bath",)
+    form_class = forms.BathForm
+    success_url = reverse_lazy("core:bath-list")
+
+
+class BathUpdate(CoreUpdateView):
+    model = models.Bath
+    permission_required = ("core.change_bath",)
+    form_class = forms.BathForm
+    success_url = reverse_lazy("core:bath-list")
+
+
+class BathDelete(CoreDeleteView):
+    model = models.Bath
+    permission_required = ("core.delete_bath",)
+    success_url = reverse_lazy("core:bath-list")

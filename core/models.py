@@ -699,3 +699,32 @@ class Weight(models.Model):
 
     def clean(self):
         validate_date(self.date, "date")
+
+
+class Bath(models.Model):
+    model_name = "bath"
+    child = models.ForeignKey(
+        "Child",
+        on_delete=models.CASCADE,
+        related_name="bath",
+        verbose_name=_("Child"),
+    )
+    date = models.DateField(
+        blank=False, default=timezone.localdate, null=False, verbose_name=_("Date")
+    )
+    notes = models.TextField(blank=True, null=True, verbose_name=_("Notes"))
+    tags = TaggableManager(blank=True, through=Tagged)
+
+    objects = models.Manager()
+
+    class Meta:
+        default_permissions = ("view", "add", "change", "delete")
+        ordering = ["-date"]
+        verbose_name = _("Bath")
+        verbose_name_plural = _("Baths")
+
+    def __str__(self):
+        return str(_("Bath"))
+
+    def clean(self):
+        validate_date(self.date, "date")

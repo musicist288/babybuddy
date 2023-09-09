@@ -39,7 +39,8 @@
     }
 }
 
-.card-diaperchange {
+.card-diaperchange,
+.card-bath {
     border-color: map.get($theme-colors, 'danger');
 
     .card-header, .card-header a {

@@ -251,6 +251,12 @@
       "css": "pumping",
       "code": 62631,
       "src": "entypo"
+    },
+    {
+      "uid": "5d24e595104bfd7117db134253fc9ca1",
+      "css": "bath",
+      "code": 62157,
+      "src": "fontawesome"
     }
   ]
 }

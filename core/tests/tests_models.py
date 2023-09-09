@@ -380,3 +380,18 @@ class WeightTestCase(TestCase):
         self.assertEqual(self.weight, models.Weight.objects.first())
         self.assertEqual(str(self.weight), "Weight")
         self.assertEqual(self.weight.weight, 23)
+
+
+class BathTestCase(TestCase):
+    def setUp(self):
+        call_command("migrate", verbosity=0)
+        self.child = models.Child.objects.create(
+            first_name="First", last_name="Last", birth_date=timezone.localdate()
+        )
+
+    def test_tummytime_create(self):
+        date = timezone.localdate()
+        bath = models.Bath.objects.create(child=self.child, date=date)
+        self.assertEqual(bath, models.Bath.objects.first())
+        self.assertEqual(str(bath), "Bath")
+        self.assertEqual(bath.date, date)

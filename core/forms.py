@@ -293,3 +293,14 @@ class BMIForm(CoreModelForm, TaggableModelForm):
 class TagAdminForm(forms.ModelForm):
     class Meta:
         widgets = {"color": widgets.TextInput(attrs={"type": "color"})}
+
+
+class BathForm(CoreModelForm, TaggableModelForm):
+    class Meta:
+        model = models.Bath
+        fields = ["child", "date", "notes", "tags"]
+        widgets = {
+            "child": ChildRadioSelect,
+            "date": DateInput(),
+            "notes": forms.Textarea(attrs={"rows": 5}),
+        }

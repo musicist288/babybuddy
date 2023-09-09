@@ -275,6 +275,26 @@ class WeightAdmin(ImportExportMixin, ExportActionMixin, admin.ModelAdmin):
     resource_class = WeightImportExportResource
 
 
+class BathImportExportResource(ImportExportResourceBase):
+    class Meta:
+        model = models.Bath
+
+
+@admin.register(models.Bath)
+class BathAdmin(ImportExportMixin, ExportActionMixin, admin.ModelAdmin):
+    list_display = (
+        "child",
+        "date",
+    )
+    list_filter = ("child", "tags")
+    search_fields = (
+        "child__first_name",
+        "child__last_name",
+        "date",
+    )
+    resource_class = BathImportExportResource
+
+
 class TaggedItemInline(admin.StackedInline):
     model = models.Tagged
 

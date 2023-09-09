@@ -79,3 +79,9 @@ class WeightFilter(TagFilter):
     class Meta:
         model = models.Weight
         fields = ["child"]
+
+
+class BathFilter(TagFilter):
+    class Meta:
+        model = models.Feeding
+        fields = ["child"]

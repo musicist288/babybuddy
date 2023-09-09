@@ -12091,17 +12091,22 @@ textarea.form-control-lg {
   color: #fff;
 }
 
-.card-diaperchange {
+.card-diaperchange,
+.card-bath {
   border-color: #a72431;
 }
-.card-diaperchange .card-header, .card-diaperchange .card-header a {
+.card-diaperchange .card-header, .card-diaperchange .card-header a,
+.card-bath .card-header,
+.card-bath .card-header a {
   background-color: #a72431;
   color: #f8f9fa;
 }
-.card-diaperchange .card-body {
+.card-diaperchange .card-body,
+.card-bath .card-body {
   color: #a72431;
 }
-.card-diaperchange .progress {
+.card-diaperchange .progress,
+.card-bath .progress {
   height: 2rem;
 }
 
@@ -12170,8 +12175,8 @@ textarea.form-control-lg {
 
 @font-face {
   font-family: "babybuddy";
-  src: url("../font/babybuddy.eot?34831680");
-  src: url("../font/babybuddy.eot?34831680#iefix") format("embedded-opentype"), url("../font/babybuddy.woff2?34831680") format("woff2"), url("../font/babybuddy.woff?34831680") format("woff"), url("../font/babybuddy.ttf?34831680") format("truetype"), url("../font/babybuddy.svg?34831680#babybuddy") format("svg");
+  src: url("../font/babybuddy.eot?90046232");
+  src: url("../font/babybuddy.eot?90046232#iefix") format("embedded-opentype"), url("../font/babybuddy.woff2?90046232") format("woff2"), url("../font/babybuddy.woff?90046232") format("woff"), url("../font/babybuddy.ttf?90046232") format("truetype"), url("../font/babybuddy.svg?90046232#babybuddy") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -12181,7 +12186,7 @@ textarea.form-control-lg {
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'babybuddy';
-    src: url('../font/babybuddy.svg?34831680#babybuddy') format('svg');
+    src: url('../font/babybuddy.svg?90046232#babybuddy') format('svg');
   }
 }
 */
@@ -12333,6 +12338,9 @@ textarea.form-control-lg {
 .icon-temperature:before {
   content: "\f2c8";
 } /* '' */
+.icon-bath:before {
+  content: "\f2cd";
+} /* '' */
 .icon-pumping:before {
   content: "\f4a7";
 } /* '' */

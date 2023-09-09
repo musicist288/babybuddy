@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from random import choice, choices, randint, uniform
-from datetime import timedelta
+from datetime import date, timedelta
 from decimal import Decimal
 
 from django.db import transaction
@@ -101,6 +101,9 @@ class Command(BaseCommand):
         self._add_note_entry()
         last_note_entry_time = self.time
 
+        self._add_bath_entry()
+        last_bath_entry_time = self.time
+
         while self.time < self.time_now:
             self._add_sleep_entry()
             if choice([True, False]):
@@ -132,6 +135,9 @@ class Command(BaseCommand):
             if (self.time - last_bmi_entry_time).days > 6:
                 self._add_bmi_entry()
                 last_bmi_entry_time = self.time
+            if (self.time - last_bath_entry_time).days > 6:
+                self._add_bath_entry()
+                last_bath_entry_time = self.time
 
     @transaction.atomic
     def _add_pumping_entry(self):
@@ -377,3 +383,9 @@ class Command(BaseCommand):
     def _add_tags(self, instance):
         if choice([True, False, False, False]):
             instance.tags.add(*choices(self.tags, k=randint(1, 5)))
+
+    @transaction.atomic
+    def _add_bath_entry(self):
+        instance = models.Bath.objects.create(child=self.child, date=date.today())
+        instance.save()
+        self._add_tags(instance)

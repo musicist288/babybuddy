@@ -217,3 +217,15 @@ class ViewsTestCase(TestCase):
         self.assertEqual(page.status_code, 200)
         page = self.c.get("/weight/{}/delete/".format(entry.id))
         self.assertEqual(page.status_code, 200)
+
+    def test_bath_views(self):
+        page = self.c.get("/baths/")
+        self.assertEqual(page.status_code, 200)
+        page = self.c.get("/baths/add/")
+        self.assertEqual(page.status_code, 200)
+
+        entry = models.Bath.objects.first()
+        page = self.c.get("/baths/{}/".format(entry.id))
+        self.assertEqual(page.status_code, 200)
+        page = self.c.get("/baths/{}/delete/".format(entry.id))
+        self.assertEqual(page.status_code, 200)

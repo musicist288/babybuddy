@@ -771,3 +771,26 @@ def card_tummytime_day(context, child, date=None):
         "empty": empty,
         "hide_empty": _hide_empty(context),
     }
+
+
+@register.inclusion_tag("cards/bath_last.html", takes_context=True)
+def card_bath_last(context, child):
+    """
+    Information about the most recent bath.
+    :param child: an instance of the Child model.
+    :returns: a dictionary with the most recent Bath instance.
+    """
+    instance = (
+        models.Bath.objects.filter(child=child)
+        .filter(**_filter_data_age(context, "date"))
+        .order_by("-date")
+        .first()
+    )
+    empty = not instance
+
+    return {
+        "type": "bath",
+        "bath": instance,
+        "empty": empty,
+        "hide_empty": _hide_empty(context),
+    }

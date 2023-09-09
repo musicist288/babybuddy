@@ -39,4 +39,5 @@
 .icon-today { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf274;&nbsp;'); }
 .icon-bmi { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf295;&nbsp;'); }
 .icon-temperature { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf2c8;&nbsp;'); }
+.icon-bath { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf2cd;&nbsp;'); }
 .icon-pumping { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf4a7;&nbsp;'); }
