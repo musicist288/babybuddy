@@ -70,7 +70,7 @@ def card_diaperchange_types(context, child, date=None):
     )
 
     for x in range(7):
-        stats[x] = {"wet": 0.0, "solid": 0.0, "empty": 0.0}
+        stats[x] = {"wet": 0.0, "solid": 0.0, "wet_and_solid": 0.0, "empty": 0.0}
 
     instances = (
         models.DiaperChange.objects.filter(child=child)
@@ -82,17 +82,20 @@ def card_diaperchange_types(context, child, date=None):
 
     for instance in instances:
         key = (max_date - instance.time).days
-        if instance.wet:
+        if instance.wet and instance.solid:
+            stats[key]["wet_and_solid"] += 1
+        elif instance.wet:
             stats[key]["wet"] += 1
-        if instance.solid:
+        elif instance.solid:
             stats[key]["solid"] += 1
-        if not instance.wet and not instance.solid:
+        else:
             stats[key]["empty"] += 1
 
     for key, info in stats.items():
-        total = info["wet"] + info["solid"] + info["empty"]
+        total = info["wet"] + info["solid"] + info["wet_and_solid"] + info["empty"]
         week_total += total
         if total > 0:
+            stats[key]["wet_and_solid_pct"] = info["wet_and_solid"] / total * 100
             stats[key]["wet_pct"] = info["wet"] / total * 100
             stats[key]["solid_pct"] = info["solid"] / total * 100
             stats[key]["empty_pct"] = info["empty"] / total * 100

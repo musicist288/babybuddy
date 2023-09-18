@@ -34,6 +34,13 @@
                     </div>
                 {% endif %}
 
+                {% if info.wet_and_solid_pct > 0 %}
+                    <div class="progress-bar bg-success lead"
+                         style="width: {{ info.wet_and_solid_pct|safe }}%;">
+                        {{ info.wet_and_solid|floatformat:'0' }}&nbsp;{% trans "wet & solid" %}
+                    </div>
+                {% endif %}
+		    
                 {% if info.empty_pct > 0 %}
                     <div class="progress-bar bg-transparent lead"
                          style="width: {{ info.empty_pct|safe }}%;">
