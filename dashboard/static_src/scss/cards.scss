@@ -118,3 +118,8 @@
         color: map.get($theme-colors, 'success');
     }
 }
+
+#feeding-days-carousel .feed {
+    width: 50%;
+    float: left;
+}
