@@ -104,3 +104,9 @@ class ChildRadioSelect(RadioSelect):
         if value != "":
             option["picture"] = value.instance.picture
         return option
+
+
+class DateTimeInputWithNowButton(widgets.DateTimeInput):
+    template_name = "core/widget_datetimenowbutton.html"
+    input_type = "datetime-local"
+    # JS for this widget is bundled with the core static_src files.
