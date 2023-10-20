@@ -2,6 +2,7 @@ import datetime
 from typing import Any, Dict, Optional
 
 from django.forms import RadioSelect, widgets
+from babybuddy import widgets as bb_widgets
 
 from . import models
 
@@ -106,7 +107,6 @@ class ChildRadioSelect(RadioSelect):
         return option
 
 
-class DateTimeInputWithNowButton(widgets.DateTimeInput):
+class DateTimeInputWithNowButton(bb_widgets.DateTimeInput):
     template_name = "core/widget_datetimenowbutton.html"
-    input_type = "datetime-local"
     # JS for this widget is bundled with the core static_src files.

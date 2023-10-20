@@ -21,15 +21,10 @@
 		    zeropad(date.getDate())
 		].join('-');
 		
-		let currentValue = new Date(datetimeInput.value);
 		let timeStr = [
 		    zeropad(date.getHours()),
 		    zeropad(date.getMinutes()),
-		    // For some reason setting seconds to some value
-		    // other than what the current value is throwing
-		    // an error in Brave. Not interested in debugging
-		    // this further and seconds are unimportant.
-		    zeropad(currentValue.getSeconds())
+		    zeropad(date.getSeconds())
 		].join(':');
 		
 		let dateTimeStr = dateStr + 'T' + timeStr;
