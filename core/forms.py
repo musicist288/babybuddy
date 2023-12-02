@@ -199,7 +199,7 @@ class SleepForm(CoreModelForm, TaggableModelForm):
         widgets = {
             "child": ChildRadioSelect,
             "start": DateTimeInput(),
-            "end": DateTimeInput(),
+            "end": DateTimeInputWithNowButton(),
             "notes": forms.Textarea(attrs={"rows": 5}),
         }
 
