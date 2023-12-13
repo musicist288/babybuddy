@@ -12078,6 +12078,9 @@ textarea.form-control-lg {
 .card-dashboard .card-header {
   margin-bottom: 0;
 }
+.card-dashboard .card-actions {
+  float: right;
+}
 .card-dashboard .card-body .card-text {
   color: var(--bs-secondary-color);
 }
