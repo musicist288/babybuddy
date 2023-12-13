@@ -6,12 +6,17 @@
     line-height: $headings-line-height;
 }
 
+
 .card-dashboard {
     margin-bottom: $spacer;
 
     .card-header {
         @extend %card-header-text;
         margin-bottom: 0;
+    }
+
+    .card-actions {
+        float: right;
     }
 
     .card-body {

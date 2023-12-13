@@ -5,6 +5,11 @@
     <a href="{% url "core:tummytime-list" %}">
         {% trans "Today's Tummy Time" %}
     </a>
+    <div class="card-actions">
+        <a href="{% url "core:tummytime-add" %}">
+            <i class="icon-add"></i>
+        </a>
+    </div>
 {% endblock %}
 
 {% block title %}
