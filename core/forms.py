@@ -242,7 +242,7 @@ class TummyTimeForm(CoreModelForm, TaggableModelForm):
         widgets = {
             "child": ChildRadioSelect,
             "start": DateTimeInput(),
-            "end": DateTimeInput(),
+            "end": DateTimeInputWithNowButton(),
         }
 
 
