@@ -22,7 +22,8 @@
             <thead>
                 <tr>
                     <th>{% trans "Actions" %}</th>
-                    <th>{% trans "Date" %}</th>
+                    <th>{% trans "Start" %}</th>
+                    <th>{% trans "End" %}</th>
                     {% if not unique_child %}
                         <th>{% trans "Child" %}</th>
                     {% endif %}
@@ -55,6 +56,7 @@
                             </div>
                         </td>
                         <th scope="row">{{ feeding.start|datetime_short }}</th>
+                        <th scope="row">{{ feeding.end|datetime_short }}</th>
                         {% if not unique_child %}
                             <td><a href="{% url 'core:child' feeding.child.slug %}">{{ feeding.child }}</a></td>
                         {% endif %}
