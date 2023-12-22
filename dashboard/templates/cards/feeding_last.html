@@ -14,6 +14,7 @@
 
 {% block title %}
     {% if feeding %}
+    <a href="{% url "core:feeding-update" pk=feeding.id %}">
         {% blocktrans trimmed with since=feeding.start|deltasince|duration_string:'m' time=feeding.start|time amount=feeding.amount %}
             <div>{{ since }} ago</div>
             <small>
@@ -21,6 +22,7 @@
 		({{ amount  }})
 	    </small>
         {% endblocktrans %}
+    </a>
     {% else %}
         {% trans "None" %}
     {% endif %}

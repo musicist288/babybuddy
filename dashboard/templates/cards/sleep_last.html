@@ -14,10 +14,12 @@
 
 {% block title %}
     {% if sleep %}
+    <a href="{% url "core:sleep-update" pk=sleep.id %}">
         {% blocktrans trimmed with since=sleep.end|deltasince|duration_string:'m' time=sleep.end|time %}
             <div>{{ since }} ago</div>
             <small>{{ time }}</small>
         {% endblocktrans %}
+    </a>
     {% else %}
         {% trans "None" %}
     {% endif %}
