@@ -142,9 +142,10 @@ def card_feeding_recent(context, child, end_date=None):
             hour=23, minute=59, second=59, microsecond=9999
         )
         idx = (end_date.date() - feed_date.date()).days
-        result = results[idx]
-        result["total"] += instance.amount if instance.amount is not None else 0
-        result["count"] += 1
+        if 0 <= idx < len(results):
+            result = results[idx]
+            result["total"] += instance.amount if instance.amount is not None else 0
+            result["count"] += 1
 
     return {
         "feedings": results,
@@ -289,7 +290,7 @@ def card_sleep_recent(context, child, end_date=None):
         # this is more complicated than feedings because we only want to capture the PORTION of sleep
         # that is a part of this day (e.g. starts sleep at 7PM and finished at 7AM = 5 hrs yesterday 7 hrs today)
         # (Assuming you have a unicorn sleeper. Congratulations)
-        if start_idx == end_idx and start_idx < len(results):  # if we're in the same day it's simple
+        if start_idx == end_idx and (0 <= start_idx < len(results)):  # if we're in the same day it's simple
             result = results[start_idx]
             result["total"] += end - start
             result["count"] += 1
