@@ -289,7 +289,7 @@ def card_sleep_recent(context, child, end_date=None):
         # this is more complicated than feedings because we only want to capture the PORTION of sleep
         # that is a part of this day (e.g. starts sleep at 7PM and finished at 7AM = 5 hrs yesterday 7 hrs today)
         # (Assuming you have a unicorn sleeper. Congratulations)
-        if start_idx == end_idx:  # if we're in the same day it's simple
+        if start_idx == end_idx and start_idx < len(results):  # if we're in the same day it's simple
             result = results[start_idx]
             result["total"] += end - start
             result["count"] += 1
